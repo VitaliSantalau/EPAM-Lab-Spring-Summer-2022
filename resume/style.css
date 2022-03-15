@@ -1,0 +1,171 @@
+/*** VARIABLES ***/
+:root {
+  --color-bg-main: #c4c4c4;
+  --color-bg-page: #f1eded;
+  --color-title: #233c5c;
+  --color-block: #365e91;
+}
+
+/*** COMMON ***/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none; 
+}
+
+ul { list-style: none; }
+
+li {
+  font-size: 1.8rem;
+  line-height: 3rem; 
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+section {
+  width: 100%;
+  padding: 2rem;
+}
+
+.title {
+  margin-bottom: 2rem;
+  font-size: 3.2rem;
+  line-height: 4rem;
+  letter-spacing: 0.4rem;
+  color: var(--color-title);
+  border-bottom: 1px solid var(--color-title);
+}
+
+/***  ***/
+
+html {
+  font-size: 62.5%; /* 16px * 62.5% = 10px = 1rem */
+  scroll-behavior: smooth;
+} 
+
+body {
+  font-size: 1.6rem;
+  background-color: var(--color-bg-main);
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+  max-width: 1440px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-page);
+}
+
+main {
+  height: 100%;
+}
+
+.flex-layout {
+  display: flex;
+  column-gap: 2rem;
+}
+
+.name {
+  font-size: 3.5rem;
+  color: var(--color-title);
+  text-transform: uppercase;
+}
+
+.position {
+  font-size: 1.8rem;
+  letter-spacing: 0.3rem;
+  font-weight: 500;
+  color: var(--color-title);
+}
+
+.img-photo {
+  margin: 2rem;
+  border-radius: 50%;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+}
+
+.social-link {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: scale(1.05);
+  transition: 0.3ms;
+}
+
+.social-link:hover {
+  transform: scale(1.1);
+}
+
+.github {
+  background-image: url(./assets/svg/github.svg);
+}
+
+.linkedin {
+  background-image: url(./assets/svg/linkedin.svg);
+}
+
+.skype {
+  background-image: url(./assets/svg/skype.svg);
+}
+
+article {
+  flex: auto;
+}
+
+.summary {
+  padding-top: 10rem;
+}
+
+.summary-text {
+  font-size: 2.2rem;
+  text-indent: 1em;
+  line-height: 3.1rem;
+}
+
+.education,
+.certifications,
+.skills,
+.experience {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+.skills {
+  column-width: 15vw;
+}
+
+.certifications a {
+  color: var(--color-block);
+}
+
+.color-block {
+  height: 7rem;
+  width: 100%;
+  background-color: var(--color-block);
+}
