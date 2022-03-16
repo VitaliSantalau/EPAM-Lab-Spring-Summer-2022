@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vitali Santalau</title>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <h1 class="visually-hidden">CV Vitali Santalau</h1>
+  <div class="container">
+    <main class="flex-layout">
+      <aside>
+        <div class="color-block"></div>
+        <section>
+          <h2 class="name">Vitali Santalau</h2>
+          <p class="position">software developer</p>
+          <img class="img-photo" src="./assets/img/photo.png" alt="photo"> 
+        </section>
+        <section>
+          <h2 class="visually-hidden">Social links</h2>
+          <ul class="social-links">
+            <li>
+              <a class="social-link github" href="https://github.com/vitalisantalau" target="_blank"></a>
+            </li>
+            <li>
+              <a class="social-link linkedin" href="https://www.linkedin.com/in/vitali-santalau-3334b91ba" target="_blank"></a>
+            </li>
+            <li>
+              <a class="social-link skype" href="https://join.skype.com/invite/JGZabnC6xj0i" target="_blank"></a>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="title">Contact</h2>
+          <ul>
+            <li>
+              <strong>Phone:</strong>
+              <a href="tel:+375447420847">+375 (44) 7420847</a>
+            </li>
+            <li>
+              <strong>Email:</strong>
+              <a href="mailto:v.santalau@gmail.com">v.santalau@gmail.com</a>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="title">Languages</h2>
+          <ul>
+            <li>English - B2</li>
+            <li>German - A2</li>
+            <li>Russian - native</li>
+          </ul>
+        </section>
+      </aside>
+      <article>
+        <h2 class="visually-hidden">Common information</h2>
+        <section class="summary-section">
+          <h3 class="title">Summary</h3>
+          <ul class="summary">
+            <li>
+              Passionate and ambitious software developer with a desire to grow professionally
+            </li>
+            <li>
+              Experience in developing applications using pure JavaScript, TypeScript throughout the entire software
+              development life cycle
+            </li>
+            <li>
+              Practical experience application React/Redux, using the latest advanced approaches to improve reliability and
+              performance
+            </li>
+            <li>
+              Basic knowledge of NodeJS, Express, Angular, Gatsby, NextJS
+            </li>
+            <li>
+              In-depth knowledge of object-oriented programming, ability to properly use Design Patterns
+            </li>
+            <li>
+              Understanding of the basic principles of using the RESTful API, web communication protocols
+            </li>
+            <li>
+              Familiar with DRY, KISS, YAGNI, SOLID principles. Ability to understand other people's code
+            </li>
+            <li>
+              Positive experience of working both with a group and separately with people of different social status and beliefs
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3 class="title">Skills</h3>
+          <ul class="skills">
+            <li>JavaScript</li>
+            <li>TypeScript</li>
+            <li>React</li>
+            <li>Angular</li>
+            <li>Redux</li>
+            <li>HTML5</li>
+            <li>CSS3, Sass</li>
+            <li>Git, Github</li>
+          </ul>
+        </section>
+        <section>
+          <h3 class="title">Education</h3>
+          <ul class="education">
+            <li>
+              State Technical University named P. O. Sukhoi / 
+              Bachelor's degree, Engineering/Industrial Management
+              2004 - 2009
+            </li>
+            <li>
+              State Technical University named P.O.Sukhoi / 
+              Industrial Technology / Engineer
+              1999 - 2004
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3 class="title">Certifications</h3>
+          <ul class="certifications">
+            <li>
+              JavaScript/Front-end 2021Q3 - RS School
+            </li>
+            <li>
+              JS/FE Pre-School - RS School,
+              <a href="https://vitalisantalau.github.io/cv/assets/certificates/rsshool-stage0.pdf" target="_blank">certificate</a>
+            </li>
+            <li>
+              JavaScript/DOM/UI” for programmers - javascript.info,
+              <a href="https://vitalisantalau.github.io/cv/assets/certificates/JavaScript-DOM-UI.jpg" target="_blank">certificate</a>
+            </li>
+            <li>
+              General English course, level C1  - The Language Institute Edinburgh,
+              <a href="https://vitalisantalau.github.io/cv/assets/certificates/Language-Institute-Edinbirgh-2020.jpg" target="_blank">certificate</a>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3 class="title">Experience</h3>
+          <ul class="experience">
+            <li>
+              EPAM - student / march 2022 - present
+            </li>
+          </ul>
+        </section>
+        <div class="color-block">
+          <button class="switch">to Float</button>
+        </div>
+      </article>
+      <div style="clear:both"></div> <!-- this is needed to cancel the float -->
+    </main>
+  </div>
+  <script>
+    const main = document.getElementsByTagName('main');
+
+    document.querySelector('.switch')
+      .addEventListener('pointerdown', function() {
+        this.textContent = {
+          'to Float': 'to Flex',
+          'to Flex': 'to Float',
+        }[this.textContent];
+
+        main[0].className = {
+          'float-layout': 'flex-layout',
+          'flex-layout': 'float-layout',
+        }[main[0].className]
+    })
+  </script>
+</body>
+</html>
