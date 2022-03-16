@@ -56,7 +56,6 @@ section {
 
 html {
   font-size: 62.5%; /* 16px * 62.5% = 10px = 1rem */
-  scroll-behavior: smooth;
 } 
 
 body {
@@ -65,8 +64,7 @@ body {
 }
 
 .container {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   padding: 2rem;
   max-width: 1440px;
   width: 100%;
@@ -78,10 +76,28 @@ main {
   height: 100%;
 }
 
-.flex-layout {
-  display: flex;
-  column-gap: 2rem;
+/*** float ***/
+main {
+
 }
+
+/*** flex ***/
+
+.flex-layout {
+  /* display: flex;
+  column-gap: 2rem; */
+}
+
+.flex-layout > aside {
+  /* width: 100%;
+  max-width: 35rem; */
+}
+
+.flex-layout > article {
+  /* flex: 100%; */
+}
+
+/*** ***/
 
 .name {
   font-size: 3.5rem;
@@ -101,11 +117,28 @@ main {
   border-radius: 50%;
 }
 
-.social-links {
-  display: flex;
-  align-items: center;
-  column-gap: 2rem;
+/*** float ***/
+
+.social-links > li {
+  /* display: inline-block; */
+  /* margin-right: 2rem; */
 }
+
+.social-links > li:last-child {
+  /* margin-right: 0; */
+}
+
+/*** ***/
+
+/*** flex ***/
+
+.flex-layout .social-links {
+  /* display: flex;
+  align-items: center;
+  column-gap: 2rem; */
+}
+
+/*** ***/
 
 .social-link {
   display: block;
@@ -134,20 +167,9 @@ main {
   background-image: url(./assets/svg/skype.svg);
 }
 
-article {
-  flex: auto;
-}
+.summary-section { padding-top: 10rem; }
 
-.summary {
-  padding-top: 10rem;
-}
-
-.summary-text {
-  font-size: 2.2rem;
-  text-indent: 1em;
-  line-height: 3.1rem;
-}
-
+.summary,
 .education,
 .certifications,
 .skills,
@@ -156,9 +178,13 @@ article {
   list-style-position: inside;
 }
 
-.skills {
-  column-width: 15vw;
+.summary li {
+  font-size: 2.2rem;
+  text-indent: 1em;
+  line-height: 3.1rem;
 }
+
+.skills { column-width: 15vw; }
 
 .certifications a {
   color: var(--color-block);
