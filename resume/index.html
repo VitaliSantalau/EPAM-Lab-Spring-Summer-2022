@@ -10,7 +10,7 @@
 <body>
   <h1 class="visually-hidden">CV Vitali Santalau</h1>
   <div class="container">
-    <main class="float-layout">
+    <main class="flex-layout">
       <aside>
         <div class="color-block"></div>
         <section>
@@ -143,10 +143,28 @@
             </li>
           </ul>
         </section>
-        <div class="color-block"></div>
+        <div class="color-block">
+          <button class="switch">to Float</button>
+        </div>
       </article>
       <div style="clear:both"></div> <!-- this is needed to cancel the float -->
     </main>
   </div>
+  <script>
+    const main = document.getElementsByTagName('main');
+
+    document.querySelector('.switch')
+      .addEventListener('pointerdown', function() {
+        this.textContent = {
+          'to Float': 'to Flex',
+          'to Flex': 'to Float',
+        }[this.textContent];
+
+        main[0].className = {
+          'float-layout': 'flex-layout',
+          'flex-layout': 'float-layout',
+        }[main[0].className]
+    })
+  </script>
 </body>
 </html>
