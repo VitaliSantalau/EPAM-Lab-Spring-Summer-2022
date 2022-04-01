@@ -1,0 +1,29 @@
+{
+  "name": "epam-lab-spring-summer-2022",
+  "version": "1.0.0",
+  "description": "NodeJs npm overview app task",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "nodemon": "nodemon ./index.js localhost 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VitaliSantalau/EPAM-Lab-Spring-Summer-2022.git"
+  },
+  "author": "Vitali Santalau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VitaliSantalau/EPAM-Lab-Spring-Summer-2022/issues"
+  },
+  "homepage": "https://github.com/VitaliSantalau/EPAM-Lab-Spring-Summer-2022#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "node-fetch": "^3.2.3",
+    "uniqolor": "^1.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
