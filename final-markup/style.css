@@ -1,0 +1,59 @@
+/*** VARIABLES ***/
+:root {
+  /* --color-bg-main:  */
+  /* --color-bg-page:  */
+  /* --color-title:  */
+  /* --color-block:  */
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 50px 80px;
+  width: 100%;
+  max-width: 1300px;
+  height: 100%;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+}
+
+.column_flex {
+  flex: 1;
+}
+
+.column_center {
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  height: 500px;
+  background-image: url(./assets/images/header-bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.header__title {
+  margin-bottom: 30px;
+}
+
+.header__nav {
+  justify-content: center;
+  column-gap: 10px;
+}
