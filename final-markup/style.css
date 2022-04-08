@@ -524,6 +524,6 @@ body {
   transition: 0.2s;
 }
 
-.social-links > img:hover {
+.social-links img:hover {
   transform: scale(1.3);
 }
