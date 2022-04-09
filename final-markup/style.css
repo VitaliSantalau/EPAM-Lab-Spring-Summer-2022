@@ -97,7 +97,7 @@ body {
 /*** HEADER ***/
 .header {
   height: 500px;
-  background-image: url(./assets/images/header-bg.png);
+  background: url(./assets/images/header-bg.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -159,6 +159,7 @@ body {
   line-height: 48px;
   text-transform: uppercase;
   text-align: center;
+  animation: title 4s infinite alternate;
 }
 
 .header__nav {
@@ -185,9 +186,9 @@ body {
   position: absolute;
   top: 40%;
   left: 0%;
-  width: 68px;
   height: 21px;
   background-color: var(--color-decor);
+  animation: move 5s infinite alternate;
 }
 
 .section__title {
@@ -690,5 +691,26 @@ body {
 
   .footer__container {
     padding-top: 30px;
+  }
+}
+
+/* animations */
+@keyframes title {
+  from {
+    color: var(--color-text-main);
+  }
+  to {
+    color: var(--color-text-second);
+  }
+}
+
+@keyframes move {
+  from {
+    left: 0%;
+    width: 68px;
+  }
+  to {
+    left: 50%;
+    width: 60%;
   }
 }
