@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head><title>JS function context homework</title></head>
+  <body>
+    <style>
+      body {
+        width: 50%;
+        margin: 0 auto;
+        font-size: 16pt;
+      }
+      section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      code {
+        background-color: lightgray;
+      }
+      #out {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    </style>
+    <section>
+      <h1>JS function context homework</h1>
+      <p><b>Task:</b></p>
+      <p>Seems like something is wrong. <em>'Click me button'</em> is not working properly. It is supposed to have 3 handlers for click, right-click (contextmenu), and hover (mouseover). Please, fix event handlers without touching functions' bodies. Bind proper context for each handler.
+      </p>
+      <p>
+        Please, also consider passing corresponding arguments to make clicks and hovers counted and recorded to <code>component.state</code> properly. Use <em>'Log component state'</em> button to log the state in the console. Use F12 to open browser Dev Tools console.
+      </p>
+      <p>Push corrected file to repo <em>'Function context'</em></p>
+      <div id="out">
+        <p>Clicks count <span id="clicksCount">0</span></p>
+      </div>
+      <br/>
+      <button onclick="console.log(component.state)">Log component state</button>
+    </section>
+    <section>
+      <p>Want more challenge? Check optional task in description at training portal</p>
+    </section>
+</body>
+<script>
+  let customNameSpace = {
+    countButtonClicks: function () {
+      let currentNumber = parseInt(
+        document.getElementById('clicksCount').innerText
+      );
+      document.getElementById('clicksCount').innerText = currentNumber + 1;
+    }
+  };
+
+  function myComponent() {
+    const component = {
+      element: document.createElement("button"),
+      innerText: 'Click Me',
+      state: {
+        clickedCount: 0,
+        rightClickedCount: 0,
+        hoveredCount: 0
+      },
+      attachEvent: function(eventName, handler) {
+        this.element.addEventListener(eventName, handler);
+      },
+      render: function(parentNode) {
+        if (this.innerText) {
+          this.element.innerText = this.innerText;
+        }
+        document.getElementById(parentNode).appendChild(this.element);
+      }
+    };
+    return component;
+  }
+
+  const component = new myComponent();
+
+/******  TODO: Fix event handlers. Do not touch functions' bodies ******/
+
+  component.attachEvent('click', function(eventNameForComponentState) {
+    // this.customNameSpace.countButtonClicks(); // ****** it's a mistake, see line below
+    this.countButtonClicks();
+    component.state[eventNameForComponentState]++;
+  }.bind(customNameSpace, 'clickedCount'));
+
+  component.attachEvent('contextmenu', function(eventNameForComponentState, event) {
+    event.preventDefault();
+    let contextMenu = document.createElement('p');
+    contextMenu.innerText = 'ContextMenu was here';
+    event.target.parentElement.appendChild(contextMenu);
+    component.state[eventNameForComponentState]++;
+  }.bind(component.element, 'rightClickedCount'));
+
+  component.attachEvent('mouseover', function(eventNameForComponentState) {
+    let currentColor = this.element.getAttribute('style');
+    let color = currentColor === 'color: red' ? 
+      'color: green' : 'color: red';
+    this.element.setAttribute('style', color);
+    this.state[eventNameForComponentState]++;
+  }.bind(component, 'hoveredCount'));
+
+  component.render('out');
+</script>
+</html>
