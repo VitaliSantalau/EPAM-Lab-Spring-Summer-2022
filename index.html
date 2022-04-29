@@ -33,7 +33,10 @@
       function delayLiveSearch(cb, delay) {
         let id;                                                // solution
         return function(e) {                                   // solution
-          clearTimeout(id);                                    // solution
+          if (id) {                                            // solution
+            clearTimeout(id);                                  // solution
+            id = null;                                         // solution
+          }                                                    // solution
           id = setTimeout(cb.bind(null, e), delay)             // solution
         }                                                      // solution
       }
