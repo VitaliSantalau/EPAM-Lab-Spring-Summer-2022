@@ -1,14 +1,12 @@
 # EPAM-Lab-Spring-Summer-2022
 
-## JS premutations task
+## JS classes task
 
-Implement program to print all permutations of a given string
-
-Example  
-Input: ABC
-Output: ABC, ACB, BAC, BCA, CAB, CBA
-
-*Print all permutations in sorted (lexicographic) order
+Describe base class Entity that can store name.
+Implement child classes Stuff, Box, User.
+Box can store some stuff[].
+Every box belongs to user
+Add example of usage of these classes, e.g., create some instances, display data related to them
 
 ## solution
 follow:
