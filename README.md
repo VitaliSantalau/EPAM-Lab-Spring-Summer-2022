@@ -11,3 +11,6 @@
 follow:
 - index.html
 - script.js
+
+## deploy
+https://vitalisantalau.github.io/EPAM-Lab-Spring-Summer-2022/table/

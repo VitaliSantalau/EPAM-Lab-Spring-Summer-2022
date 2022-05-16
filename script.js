@@ -1,15 +1,15 @@
-const data = ['lark', 'parrot', 'eagle', 'crow', 'hawk', 'sparrow'];
-
-const directions = {
+const direct = {
   'asc': 1,
   'desc': -1,
 };
 
 class Table {
-  direction = 'asc';
+  data = ['lark', 'parrot', 'eagle', 'crow', 'hawk', 'sparrow'];
+  direction = null;
 
   constructor() {
     this.render();
+    this.initListeners();
   }
 
   render() {
@@ -30,7 +30,7 @@ class Table {
 
   getHeader() {
     return `
-      <thead>
+      <thead class="header">
         <tr>
           <th>
             Bird
@@ -42,29 +42,66 @@ class Table {
   }
 
   getArrow() {
-    return `
-      ${this.direction === 'asc' ? '↑' : '↓'}
-    `;
+    if (this.direction) {
+      return `
+        ${this.direction === 'asc' ? '↑' : '↓'}
+      `;
+    } else return ``;
   }
 
   getBody() {
     return `
-      <tbody>
+      <tbody class="body">
         ${this.getRows()}    
       </tbody>
     `;
   }
 
   getRows() {
-    return data.map((item) => this.getRow(item)).join('');
+    let data = this.data;
+    if (this.direction) {
+      data = [...data].sort((a, b) => direct[this.direction] * (a <= b ? -1 : 1))
+    }
+    return data.map((item, i) => this.getRow(item, i)).join('');
   }
 
-  getRow(data) {
+  getRow(item, i) {
     return `
       <tr>
-        <td>${data}</td>
+        <td contenteditable id="${i}">${item}</td>
       </tr>
     `;
+  }
+
+  initListeners() {
+    this.element.querySelector('.header')
+      .addEventListener('pointerdown', () => {
+        this.setDirection();
+        this.update();
+    });
+
+    this.element.querySelector('.body')
+      .addEventListener('input', (e) => {
+        this.data[e.target.id] = e.target.textContent;
+      })
+  }
+
+  setDirection() {
+    switch (this.direction) {
+      case 'asc':
+        this.direction = 'desc';
+        break;
+      case 'desc': 
+        this.direction = null;
+        break;
+      default:
+        this.direction = 'asc';
+    }
+  }
+
+  update() {
+    this.element.querySelector('.header').innerHTML = this.getHeader();
+    this.element.querySelector('.body').innerHTML = this.getBody();
   }
 }
 
