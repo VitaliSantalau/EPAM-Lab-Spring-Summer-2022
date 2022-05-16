@@ -12,8 +12,9 @@
 </body>
 <script type="module">
   import Table from './script.js';
+  import data from "./data.js";
 
-  const table = new Table();
+  const table = new Table(data);
 
   document.addEventListener('DOMContentLoaded', () => {
     root.append(table.element);

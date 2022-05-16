@@ -4,10 +4,10 @@ const direct = {
 };
 
 class Table {
-  data = ['lark', 'parrot', 'eagle', 'crow', 'hawk', 'sparrow'];
   direction = null;
 
-  constructor() {
+  constructor(data) {
+    this.data = data;
     this.render();
     this.initListeners();
   }
@@ -60,15 +60,19 @@ class Table {
   getRows() {
     let data = this.data;
     if (this.direction) {
-      data = [...data].sort((a, b) => direct[this.direction] * (a <= b ? -1 : 1))
+      data = [...data].sort((a, b) => {
+        return direct[this.direction] * (a.bird <= b.bird ? -1 : 1);
+      })
     }
-    return data.map((item, i) => this.getRow(item, i)).join('');
+    return data.map((item) => this.getRow(item)).join('');
   }
 
-  getRow(item, i) {
+  getRow(item) {
     return `
       <tr>
-        <td contenteditable id="${i}">${item}</td>
+        <td contenteditable id="${item.id}">
+          ${item.bird}
+        </td>
       </tr>
     `;
   }
@@ -82,7 +86,9 @@ class Table {
 
     this.element.querySelector('.body')
       .addEventListener('input', (e) => {
-        this.data[e.target.id] = e.target.textContent;
+        this.data
+          .find((item) => item.id === e.target.id)
+          .bird = e.target.textContent.trim();
       })
   }
 
