@@ -11,7 +11,7 @@ class Screen {
     this.element = element.firstElementChild;
 
     this.setCategory();
-    this.setContent();
+    this.setContent(null);
     this.initListeners();
   }
 
@@ -64,7 +64,7 @@ class Screen {
     }
   }
 
-  async setContent(queryTitle = null) {
+  async setContent(queryTitle) {
     const content = this.element.querySelector('.content');
 
     if (!queryTitle) {
@@ -90,6 +90,11 @@ class Screen {
     const category = this.element.querySelector('#category');
     const handleCategory = (e) => {
       const queryCategory = e.target.value.split(' ')[0];
+      
+      if (!queryCategory) {
+        this.setContent(null);
+      }
+  
       this.setTitle(queryCategory);
     };
     category.addEventListener('change', handleCategory);
@@ -107,17 +112,15 @@ class Screen {
   }
 
   async request(query) {
-    try {
-      const response = await fetch(`${BASE_URL}${query}`)
-        .then((res) => {
-          if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
-          return res;
-        });
-      
-      return response.json();
-    } catch (err) {
-      console.error(`Fetch problem: ${err}`)
-    }
+    return fetch(`${BASE_URL}${query}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response;
+      })
+      .then((response) => response.json())
+      .catch((error) => console.error(`Fetch problem: ${error}`))
   }
 }
 
