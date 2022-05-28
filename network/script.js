@@ -48,16 +48,20 @@ class Screen {
     `).join('');
   }
 
-  async setTitle(queryCategory) {
+  async setTitle(queryCategory = '') {
     const title = this.element.querySelector('#title');
+  
+    if (queryCategory) {
+      title.innerHTML = `<option>Loading...</option>`;
 
-    title.innerHTML = `<option>Loading...</option>`;
-
-    const response = await this.request(`/entries?category=${queryCategory}`);
-
-    title.innerHTML = [{API: ''}, ...response.entries].map((item) => `
-      <option>${item.API}</option>
-    `).join('');
+      const response = await this.request(`/entries?category=${queryCategory}`);
+  
+      title.innerHTML = [{API: ''}, ...response.entries].map((item) => `
+        <option>${item.API}</option>
+      `).join('');
+    } else {
+      title.innerHTML = '';
+    }
   }
 
   async setContent(queryTitle = null) {
