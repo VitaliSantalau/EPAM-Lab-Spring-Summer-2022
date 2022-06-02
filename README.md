@@ -1,10 +1,9 @@
 # EPAM-Lab-Spring-Summer-2022
 
-## JS Network interaction
+## JS User Data Manipulation
 
-- Develop page with two dropdowns “Title” and “Category”
-- Values of selections should invoke render of data from https://api.publicapis.org/
-- Handle possible error cases
+- Develop page with stored state that can “restore” user name and predefined theme (dark or light) after browser was closed
+- Apply this module to existing app (from previous task or any)
 
 ## solution
 follow:
@@ -12,4 +11,4 @@ follow:
 - script.js
 
 ## deploy
-https://vitalisantalau.github.io/EPAM-Lab-Spring-Summer-2022/network/
+https://vitalisantalau.github.io/EPAM-Lab-Spring-Summer-2022/user-data/
