@@ -41,11 +41,15 @@ class Screen {
 
     category.innerHTML = `<option>Loading...</option>`;
 
-    const response = await this.request('/categories');
+    try {
+      const response = await this.request('/categories');
  
-    category.innerHTML = ['', ...response.categories].map((category) => `
-      <option>${category}</option>
-    `).join('');
+      category.innerHTML = ['', ...response.categories].map((category) => `
+        <option>${category}</option>
+      `).join('');  
+    } catch (error) {
+      console.error(`Could not set category, because ${error}`);
+    }
   }
 
   async setTitle(queryCategory = '') {
@@ -54,11 +58,16 @@ class Screen {
     if (queryCategory) {
       title.innerHTML = `<option>Loading...</option>`;
 
-      const response = await this.request(`/entries?category=${queryCategory}`);
+      try {
+        const response = await this.request(`/entries?category=${queryCategory}`);
   
-      title.innerHTML = [{API: ''}, ...response.entries].map((item) => `
-        <option>${item.API}</option>
-      `).join('');
+        title.innerHTML = [{API: ''}, ...response.entries].map((item) => `
+          <option>${item.API}</option>
+        `).join('');  
+      } catch (error) {
+        console.error(`Could not set title, because ${error}`);
+      }
+      
     } else {
       title.innerHTML = '';
     }
@@ -72,17 +81,22 @@ class Screen {
     } else {
       content.innerHTML = `<option>Loading...</option>`;
 
-      const response = await this.request(`/entries?title=${queryTitle}`);
+      try {
+        const response = await this.request(`/entries?title=${queryTitle}`);
 
-      const {
-        API, Description, Category, Link,
-      } = response.entries[0];
-
-      content.innerHTML = `
-        <h2>${API}</h2>
-        <p>${Description}</p>
-        <a href=${Link} target="_blank">link</>
-      `;
+        const {
+          API, Description, Category, Link,
+        } = response.entries[0];
+  
+        content.innerHTML = `
+          <h2>${API}</h2>
+          <p>${Description}</p>
+          <a href=${Link} target="_blank">link</>
+        `;  
+      } catch (error) {
+        console.error(`Could not set content, because ${error}`);
+      }
+      
     }
   }
 
