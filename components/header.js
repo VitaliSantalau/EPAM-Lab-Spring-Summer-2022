@@ -6,7 +6,6 @@ class Header {
   constructor() {
     this.store = new Store();
     this.render();
-    this.setTheme(this.store.get('theme') || 'light');
   }
 
   render() {
@@ -16,6 +15,7 @@ class Header {
 
     this.initListeners();
     this.setToggle();
+    this.setTheme(this.store.get('theme') || 'light');
   }
 
   get template() {
@@ -40,7 +40,7 @@ class Header {
     `;
   }
 
-  update() {
+  updateUserName() {
     this.element.querySelector('.user-name')
       .innerHTML = this.getUserName();
   }
@@ -53,7 +53,7 @@ class Header {
         <input class="theme" type="radio" id="dark" name="theme" value="dark" />
         <label class="label-dark" for="dark">dark</label>
       </div>
-    `
+    `;
   }
 
   setToggle() {
@@ -61,7 +61,7 @@ class Header {
       item.value === (this.store.get('theme') || 'light')
         ? item.checked = true
         : item.checked = false;
-    })
+    });
   }
 
   setTheme(theme) {
@@ -69,13 +69,13 @@ class Header {
     
     if (theme === 'light') {
       r.style.setProperty('--color-bg', 'bisque');
-      r.style.setProperty('--color-text', '#fabe75');
+      r.style.setProperty('--color-form-bg', '#fabe75');
       r.style.setProperty('--color-text', '#000000');
     }
 
     if (theme === 'dark') {
       r.style.setProperty('--color-bg', '#492a04');
-      r.style.setProperty('--color-text', '#633e11');
+      r.style.setProperty('--color-form-bg', '#633e11');
       r.style.setProperty('--color-text', '#ffffff');
     }
   }
@@ -84,29 +84,16 @@ class Header {
     const userBtn = this.element.querySelector('.user-btn');
     const handleUserBtn = () => {
       form.open();
-    }
+    };
     userBtn.addEventListener('pointerdown', handleUserBtn);
 
     const themes = this.element.querySelector('.themes');
-    const r = document.querySelector(':root');
-
     const handleChangeTheme = (e) => {
       const theme = e.target.value;
 
-      if (theme === 'light') {
-        r.style.setProperty('--color-bg', 'bisque');
-        r.style.setProperty('--color-text', '#fabe75');
-        r.style.setProperty('--color-text', '#000000');
-      }
-
-      if (theme === 'dark') {
-        r.style.setProperty('--color-bg', '#492a04');
-        r.style.setProperty('--color-text', '#633e11');
-        r.style.setProperty('--color-text', '#ffffff');
-      }
-
+      this.setTheme(theme);
       this.store.set('theme', theme)
-    }
+    };
     themes.addEventListener('change', handleChangeTheme);
 
     window.addEventListener('beforeunload', () => {

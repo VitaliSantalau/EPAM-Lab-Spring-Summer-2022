@@ -10,9 +10,9 @@ class Screen {
     element.innerHTML = this.template;
     this.element = element.firstElementChild;
 
-    // this.setCategory();
-    // this.setContent(null);
-    // this.initListeners();
+    this.setCategory();
+    this.setContent(null);
+    this.initListeners();
   }
 
   get template() {
@@ -129,14 +129,14 @@ class Screen {
 
   async request(query) {
     return fetch(`${BASE_URL}${query}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error: ${response.status}`);
-        }
-        return response;
-      })
       .then((response) => response.json())
-      .catch((error) => console.error(`Fetch problem: ${error}`))
+      .catch((err) => {
+        if (err.message === 'Failed to fetch') {
+          console.error('Something is wrong, probably "Too Many Requests", try do it later')
+        } else {
+            console.error(`Problem with: ${err.message}`);
+        };
+      })
   }
 }
 

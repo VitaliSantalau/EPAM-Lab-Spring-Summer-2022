@@ -10,8 +10,7 @@ follow:
 - index.html
 - components
   -- header.js
-  -- toggle.js
-  -- user.js
+  -- form.js
 - store.js
 
 ## deploy

@@ -33,7 +33,7 @@ class Form {
       this.store.set('name', e.target.name.value);
       this.close();
 
-      this.header.update();
+      this.header.updateUserName();
     };
 
     this.element.cancel.onclick = () => {
