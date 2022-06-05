@@ -1,0 +1,146 @@
+:root {
+  --color-bg: bisque;
+  --color-form-bg: #fabe75;
+  --color-text: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-size: 18px;
+  color: var(--color-text);
+}
+
+#root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg);
+  
+}
+
+header {
+  width: 100%;
+  border-bottom: 1px solid var(--color-text);
+}
+
+main {
+  flex: 1;
+  width: 100%;
+}
+
+.container {
+  padding: 30px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1920px;
+}
+
+header .container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: 30px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+main .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.dropdowns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 30px;
+}
+
+.select {
+  width: 100px;
+  height: 30px;
+}
+
+.content {
+  margin: auto;
+  font-size: 24px;
+}
+
+form {
+  position: absolute;
+  top: 40%;
+  left: calc(50% - 150px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  padding: 20px;
+  font-size: 18px;
+  background-color: var(--color-form-bg);
+}
+
+.container-btn {
+  display: flex;
+  column-gap: 20px;
+  margin-top: auto;
+}
+
+.cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  opacity: 0.3;
+}
+
+.themes {
+  display: flex;
+}
+
+.themes input[type=radio] {
+  display: none;
+}
+
+.themes label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 50px;
+  padding: 5px 10px;
+  border: 1px solid var(--color-text); 
+  cursor: pointer;
+}
+
+.label-light {
+  border-right: none;
+  border-top-left-radius: 15%;
+  border-bottom-left-radius: 15%;
+}
+
+.label-dark {
+  border-top-right-radius: 15%;
+  border-bottom-right-radius: 15%;
+}
+
+.themes input[type=radio]:checked + label {
+  background-color: var(--color-form-bg);
+}
