@@ -11,10 +11,19 @@
   <div id="root"></div>
 </body>
 <script type="module">
+  import Header from './components/header.js';
   import Screen from './script.js';
+  import form from "./components/form.js";
 
+  const header = new Header();
+  form.getHeader(header);
+
+  root.prepend(header.element);
+  
   root.append(
     new Screen().element,
   );
+
+
 </script>
 </html>

@@ -10,20 +10,22 @@ class Screen {
     element.innerHTML = this.template;
     this.element = element.firstElementChild;
 
-    this.setCategory();
-    this.setContent(null);
-    this.initListeners();
+    // this.setCategory();
+    // this.setContent(null);
+    // this.initListeners();
   }
 
   get template() {
     return `
-      <div class="container">
-        <section class="dropdowns">
-          ${this.getDropdown('category')}
-          ${this.getDropdown('title')}
-        </section>
-        <section class="content"></section>
-      </div>
+      <main>
+        <div class="container">
+          <section class="dropdowns">
+            ${this.getDropdown('category')}
+            ${this.getDropdown('title')}
+          </section>
+          <section class="content"></section>
+        </div>  
+      </main>
     `;
   }
 

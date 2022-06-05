@@ -8,7 +8,11 @@
 ## solution
 follow:
 - index.html
-- script.js
+- components
+  -- header.js
+  -- toggle.js
+  -- user.js
+- store.js
 
 ## deploy
 https://vitalisantalau.github.io/EPAM-Lab-Spring-Summer-2022/user-data/
