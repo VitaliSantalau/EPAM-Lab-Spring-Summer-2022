@@ -4,6 +4,7 @@
 
 ### GET
 /users - get users
+
 /users/id - get user
 
 ### POST
