@@ -14,4 +14,4 @@
 /users/id - update user
 
 ### DELETE
-/users/id
+/users/id - delete user
