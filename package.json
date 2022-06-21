@@ -1,0 +1,30 @@
+{
+  "name": "express-app",
+  "version": "1.0.0",
+  "description": "- Create REST API using serverless and express",
+  "main": "index.js",
+  "scripts": {
+    "start": "sls offline start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VitaliSantalau/EPAM-Lab-Spring-Summer-2022.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VitaliSantalau/EPAM-Lab-Spring-Summer-2022/issues"
+  },
+  "homepage": "https://github.com/VitaliSantalau/EPAM-Lab-Spring-Summer-2022#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1158.0",
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "serverless-http": "^3.0.1"
+  },
+  "devDependencies": {
+    "serverless-dynamodb-local": "^0.2.40",
+    "serverless-offline": "^8.8.0"
+  }
+}
