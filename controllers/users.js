@@ -1,6 +1,5 @@
-// const data = require('../model/users');
-// const findUser = require('../utils/findUser');
 const AWS = require('aws-sdk');
+const uuid = require('uuid');
 
 const USERS_TABLE = process.env.USERS_TABLE;
 const IS_OFFLINE = process.env.IS_OFFLINE;
@@ -12,7 +11,7 @@ if (IS_OFFLINE === 'true') {
     endpoint: 'http://localhost:8000',
     accessKeyId: 'DEFAULT_ACCESS_KEY',
     secretAccessKey: 'DEFAULT_SECRET',
-  })
+  });
 } else {
   dynamoDb = new AWS.DynamoDB.DocumentClient();
 };
@@ -24,76 +23,89 @@ const controller = {
     };
     dynamoDb.scan(params, (error, result) => {
       if (error) {
-        // console.log(error);
-        res.status(400).send('Could not get users');
-      }
-      if (result) {
-        res.status(200).send(result);
+        res.status(400).json({ error: 'Could not get users' });
+      };
+      if (result.Items.length) {
+        res.status(200).json(result.Items);
       } else {
-        res.status(200).send("Users not found");
+        res.status(404).json({ error: "Users not found" });
       }
     });
   },
   getUser: (req, res) => {
-    // const user = findUser(req, data);
-    // if (user) {
-    //   res.status(200).json(user);
-    // } else {
-    //   res.status(404).send('User not found');
-    // }
+    const { id } = req.params;
+    const params = {
+      TableName: USERS_TABLE,
+      Key: {
+        userId: id,
+      },
+    };
+    dynamoDb.get(params, (error, result) => {
+      if (error) {
+        res.status(400).json({ error: 'Could not get user' });
+      }
+      if (result.Item) {
+        res.status(200).json(result.Item);
+      } else {
+        res.status(404).json({ error: "User not found" });
+      }
+    });
   },
   createUser: (req, res) => {
-    // const newId = data.length ? data.at(-1).id + 1 : 1; 
-    const newId = 1;
+    const userId = uuid.v1();
+    const { name } = req.body;
     const params = {
       TableName: USERS_TABLE,
       Item: {
-        userId: newId,
-        name: req.body.name,
+        userId,
+        name,
       },
     };
     dynamoDb.put(params, (error) => {
       if (error) {
-        console.log(error);
-        res.status(400).json({ error: 'Could not create user' });
+        return res.status(400).json({ error: 'Could not create user' });
       }
-      res.json({ userId: newId, name: req.body.name });
+      res.status(201).json({ userId, name });
     });
-    // const newUser = {
-    //   id: newId,
-    //   name: req.body.name,
-    // };
-
-    // data.push(newUser);
-
-    // res.status(201).json(newUser);
   },
   updateUser: (req, res) => {
-    // const user = findUser(req, data);
-    // if (user) {
-    //   const updatedUser = {
-    //     id: user.id,
-    //     name: req.body.name,
-    //   };
-
-    //   const targetIndex = data.indexOf(user);
-    //   data.splice(targetIndex, 1, updatedUser);
-
-    //   res.status(200).json(updatedUser); 
-    // } else {
-    //   res.status(404).send('User not found');
-    // }
+    const { id } = req.params;
+    const { name } = req.body;
+    const params = {
+      TableName: USERS_TABLE,
+      Key: {
+        userId: id,
+      },
+      UpdateExpression: `set #name = :name`,
+      ExpressionAttributeNames: {
+          '#name': `name`,
+      },
+      ExpressionAttributeValues: {
+          ":name": name,
+      },
+      ReturnValues: `UPDATED_NEW`,
+    };
+    dynamoDb.update(params, (error, result) => {
+      if (error) {
+        return res.status(400).json({ error: 'Could not update user' });
+      }
+      res.status(200).json(result.Attributes);
+    });
   },
   deleteUser: (req, res) => {
-//     user = findUser(req, data);
-//     if (user) {
-//       const targetIndex = data.indexOf(user);
-//       data.splice(targetIndex, 1);
-
-//       res.sendStatus(204);
-//     } else {
-//       res.status(404).send('User not found');
-//     }
+    const { id } = req.params;
+    const params = {
+      TableName: USERS_TABLE,
+      Key: {
+        userId: id,
+      },
+    };
+    dynamoDb.delete(params, (error) => {
+      if (error) {
+        return res.status(400).json({ error: 'Could not delete user' });
+      }
+      res.status(200).json({});
+    });
   },
 }
 

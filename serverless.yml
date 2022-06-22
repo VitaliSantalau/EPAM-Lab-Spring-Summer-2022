@@ -5,6 +5,8 @@ custom:
   dynamodb:
     start:
       migrate: true
+    stages:
+      - dev
 
 provider:
   name: aws
@@ -27,7 +29,7 @@ provider:
 
 plugins:
   - serverless-dynamodb-local
-  - 'serverless-offline'
+  - serverless-offline
 
 functions:
   app:
