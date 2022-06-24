@@ -6,7 +6,7 @@ const usersRouter = require('./users');
 router.use('/users', usersRouter);
 
 router.get('/', (req, res) => {
-  res.status(200).send('api server is working');
+  res.status(200).send('api is working');
 });
 
 router.all('*', (req, res) => {

@@ -28,6 +28,7 @@
     "@shelf/jest-dynamodb": "^3.0.0",
     "jest": "^28.1.1",
     "serverless-dynamodb-local": "^0.2.40",
-    "serverless-offline": "^8.8.0"
+    "serverless-offline": "^8.8.0",
+    "supertest": "^6.2.3"
   }
 }
