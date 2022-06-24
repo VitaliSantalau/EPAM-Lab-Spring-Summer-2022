@@ -11,6 +11,6 @@ router.get('/', (req, res) => {
 
 router.all('*', (req, res) => {
   res.status(404).send('Ooops, something is wrong. You should check the route.');
-})
+});
 
 module.exports = router;

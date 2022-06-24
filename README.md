@@ -4,6 +4,6 @@
 
 - Create REST API using serverless and express
 
-- Connect application to DynamoDB 
+- Connect application to DynamoDB
 
-- Write test for endpoints 
+- Write test for endpoints

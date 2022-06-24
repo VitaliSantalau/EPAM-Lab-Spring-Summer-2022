@@ -78,10 +78,10 @@ const controller = {
       },
       UpdateExpression: `set #name = :name`,
       ExpressionAttributeNames: {
-          '#name': `name`,
+        '#name': `name`,
       },
       ExpressionAttributeValues: {
-          ":name": name,
+        ":name": name,
       },
       ReturnValues: `UPDATED_NEW`,
     };
