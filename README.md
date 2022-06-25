@@ -2,8 +2,8 @@
 
 ## Task​ description
 
-- Create REST API using serverless and express
+- [x] Create REST API using serverless and express
 
-- Connect application to DynamoDB
+- [x] Connect application to DynamoDB
 
-- Write test for endpoints
+- [x] Write test for endpoints

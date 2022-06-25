@@ -91,7 +91,7 @@ dynamoDb = {
       throw Error(`There was an error updating the item in ${TableName}`);
     }
 
-    return res.Attributes
+    return res.Attributes;
   },
 
   async delete(id, TableName) {
