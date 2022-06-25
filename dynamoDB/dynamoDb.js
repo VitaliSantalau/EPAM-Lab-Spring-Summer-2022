@@ -68,9 +68,47 @@ dynamoDb = {
     }
 
     return Item;
+  },
+
+  async update({
+    id, TableName, UpdateExpression, ExpressionAttributeNames,
+    ExpressionAttributeValues, ReturnValues,
+  }) {
+    const params = {
+      TableName,
+      Key: {
+        id,
+      },
+      UpdateExpression,
+      ExpressionAttributeNames,
+      ExpressionAttributeValues,
+      ReturnValues,
+    };
+
+    const res = await client.update(params).promise();
+
+    if (!res) {
+      throw Error(`There was an error updating the item in ${TableName}`);
+    }
+
+    return res.Attributes
+  },
+
+  async delete(id, TableName) {
+    const params = {
+      TableName,
+      Key: {
+        id,
+      },
+    };
+    const res = await client.delete(params).promise();
+
+    if (!res) {
+      throw Error(`There was an error deleting the item in ${TableName}`);
+    }
+
+    return {};
   }
-
-
 }
 
 module.exports = dynamoDb;

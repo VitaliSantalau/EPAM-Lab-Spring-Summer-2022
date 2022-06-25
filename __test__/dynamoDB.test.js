@@ -12,21 +12,21 @@ describe("Test dynamoDB", () => {
     expect(typeof dynamoDb).toBe('object');
   });
 
-  it('should return empty array', async () => {
-    const items = await dynamoDb.getAll(USERS_TABLE);
-    expect(Array.isArray(items)).toBe(true);
-    expect(items.length).toBe(0);
-  });
+  // it('should return empty array', async () => {
+  //   const items = await dynamoDb.getAll(USERS_TABLE);
+  //   expect(Array.isArray(items)).toBe(true);
+  //   expect(items.length).toBe(0);
+  // });
 
-  it('should not return item', async () => {
-    const item = await dynamoDb.get(id = '1', USERS_TABLE);
-    expect(item).toBe(undefined);
-  });
+  // it('should not return item', async () => {
+  //   const item = await dynamoDb.get(id = '1', USERS_TABLE);
+  //   expect(item).toBe(undefined);
+  // });
 
-  it('should insert item into table', async () => {
-    const response = await dynamoDb.create(item, USERS_TABLE);
-    expect(response).toBe(item);
-});
+  // it('should insert item into table', async () => {
+  //   const response = await dynamoDb.create(item, USERS_TABLE);
+  //   expect(response).toBe(item);
+  // });
 
 
 })
